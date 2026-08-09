@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: sales-inbox-router-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+      - key: DATABASE_URL
+        sync: false   # point this at a managed Postgres (e.g. Supabase) so data survives cold restarts
+      - key: CORS_ORIGINS
+        sync: false   # your deployed frontend URL
+      - key: CANDIDATE_ID
+        sync: false
