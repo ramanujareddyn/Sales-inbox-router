@@ -10,6 +10,8 @@ services:
         sync: false
       - key: GEMINI_MODEL
         value: gemini-2.0-flash
+      - key: PYTHON_VERSION
+        value: 3.11.11
       - key: DATABASE_URL
         sync: false   # point this at a managed Postgres (e.g. Supabase) so data survives cold restarts
       - key: CORS_ORIGINS
